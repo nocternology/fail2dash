@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="container auth-container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            {% if error%}
+            <div class="alert alert-danger" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Warning</strong>&nbsp;&nbsp;&nbsp;Email or Password incorrect !
+            </div>
+            {% endif %}
+
+            <form class="form-signin" method="post" action="auth">
+                <h2 class="form-signin-heading">Fail2Dash Sign-In</h2>
+                <label for="inputEmail" class="sr-only">Email address</label>
+                <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
+
+                <button class="btn btn-lg btn-primary btn-block signin-button" type="submit"><i class="fa fa-sign-in"></i>Sign in</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
