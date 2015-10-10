@@ -41,5 +41,5 @@ def logout():
 
 if __name__ == '__main__':
     app.debug = config.debug
-    app.secret_key = "8897879668D998AD5E9C4200E90E6056BBEB2FA38745ECA4D6710BC535ACDA02"
+    app.secret_key = config.secret
     app.run()
