@@ -1,4 +1,4 @@
-import config
+from config import Config
 
 from flask import Flask, session, redirect, escape, request
 from flask import render_template, url_for
@@ -24,7 +24,7 @@ def auth():
     if request.method == "GET":
         return render_template('auth.html', error=False)
     else:
-        if request.form["inputEmail"] == config.auth_mail and request.form["inputPassword"] == config.auth_password:
+        if request.form["inputEmail"] == Config.auth_mail and request.form["inputPassword"] == Config.auth_password:
             session['auth'] = True
             return redirect(url_for('index'))
         else:
@@ -40,6 +40,6 @@ def logout():
 
 
 if __name__ == '__main__':
-    app.debug = config.debug
-    app.secret_key = config.secret
+    app.debug = Config.debug
+    app.secret_key = Config.secret
     app.run()
