@@ -16,9 +16,6 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Overview<span class="sr-only">(current)</span></a></li>
             </ul>
-            <ul class="nav navbar-nav">
-                <li><a href="#">Fail2Ban Status<span class="label label-success">ON</span></a></li>
-            </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/logout"><i class="fa fa-sign-out"></i>Logout</a></li>
             </ul>
@@ -114,12 +111,12 @@
 <script src="http://maps.googleapis.com/maps/api/js"></script>
 <script>
 function initialize() {
-  var mapProp = {
-    center:new google.maps.LatLng(51.508742,-0.120850),
-    zoom:5,
-    mapTypeId:google.maps.MapTypeId.ROADMAP
-  };
-  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    var mapProp = {
+        center:new google.maps.LatLng(51.508742,-0.120850),
+        zoom:5,
+        mapTypeId:google.maps.MapTypeId.ROADMAP
+    };
+    var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
