@@ -14,7 +14,7 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Server#1<span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="#">{{ data.hostname }}<span class="sr-only">(current)</span></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/logout"><i class="fa fa-sign-out"></i>Logout</a></li>
@@ -28,16 +28,20 @@
         <div class="col-md-2">
             <ul class="nav nav-pills nav-stacked">
                 <li role="presentation" class="active"><a href="#">Overview</a></li>
-                <li role="presentation"><a href="#">Raw Logs</a></li>
-                <li role="presentation"><a href="#">Raw Logs</a></li>
-                <li role="presentation"><a href="#">Raw Logs</a></li>
+                <li role="presentation"><a href="/raw">Raw Logs</a></li>
 
                 <div class="spacer100"></div>
 
-                <li class="text-center">Status</li>
-                <li role="presentation" class="text-center"><a href="#">ON</a></li>
-                <li class="text-center">RealTime</li>
-                <li role="presentation" class="text-center"><a href="#">OFF</a></li>
+                <div class="overview-controls">
+                    <li class="text-center">Status</li>
+                    {% if data.status == true %}
+                    <button type="button" class="btn btn-success button-control">On</button>
+                    {% else %}
+                    <button type="button" class="btn btn-danger button-control">Off</button>
+                    {% endif %}
+                    <li class="text-center">Realtime</li>
+                    <button type="button" class="btn btn-danger button-control">Off</button>
+                </div>
             </ul>
         </div>
 
