@@ -12,6 +12,7 @@ class Config():
 
     # Fail2Ban parsing configuration
     log_file = ""
+    parse_default = "rt"
 
     # Geolocalisation API setup
     api_endpoint = "https://www.telize.com/geoip/%s"
