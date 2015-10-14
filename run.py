@@ -1,5 +1,6 @@
 from config import Config
 from core.flaskutils import *
+from core.utils import gatherHostInfo
 
 from flask import Flask, session, redirect, escape, request
 from flask import render_template, url_for
@@ -10,7 +11,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     if isAuth(session):
-        return render_template('index.html')
+        return render_template('index.html', data=gatherHostInfo())
     else:
         return redirect(url_for('auth'))
 
