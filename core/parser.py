@@ -33,9 +33,21 @@ class Parser(object):
         while True:
             line = self.log.readline()
             if self.isLog(line):
-                entries.append(line)
+                entries.append(self.tidyLog(line))
 
         return entries
+
+    def tidyLog(self, entry):
+        """
+        Tidies up a single log entry to separate usefull infos.
+        """
+        # TODO : replace this with some regex magic again
+        logLine = {}
+        logLine["date"] = entry[0:10]
+        logLine["time"] = entry[11:19]
+        logLine["service"] = entry[entry.find("[") + 1: entry.find("]")]
+        logLIne["ip"] = entry[entry.find("Ban") + 4: len(entry) - 1]
+        return logLine
 
     def parseRT(self):
         """
