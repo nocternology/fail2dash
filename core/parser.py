@@ -14,15 +14,12 @@ class Parser(object):
             self.mode = config.parse_default
             self.log = open(config.log_file)
 
-    def isLog(line):
+    def getData(self):
         """
-        Checks if a log entry is a fail2ban log entry
+        Generic interface to simply get the logs.
         """
-        # TODO : Change this to some regex magic ?
-        if "fail2ban" in line and "Ban" in line:
-            return True
-        else:
-            return False
+
+        return self.parseAll()
 
     def parseAll(self):
         """
@@ -37,6 +34,16 @@ class Parser(object):
 
         return entries
 
+    def isLog(line):
+        """
+        Checks if a log entry is a fail2ban log entry
+        """
+        # TODO : Change this to some regex magic ?
+        if "fail2ban" in line and "Ban" in line:
+            return True
+        else:
+            return False
+
     def tidyLog(self, entry):
         """
         Tidies up a single log entry to separate usefull infos.
@@ -47,6 +54,7 @@ class Parser(object):
         logLine["time"] = entry[11:19]
         logLine["service"] = entry[entry.find("[") + 1: entry.find("]")]
         logLIne["ip"] = entry[entry.find("Ban") + 4: len(entry) - 1]
+
         return logLine
 
     def parseRT(self):
