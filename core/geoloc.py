@@ -27,7 +27,9 @@ class Geoloc(object):
         """
         Metamethod that returns the full geoloc information for a given IP adress
         """
+        geoloc = self.getLocationAPI(ip)
         geoloc["ip"] = ip
+
         return geoloc
 
     def getLocationAPI(self, ip):
