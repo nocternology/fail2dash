@@ -36,13 +36,16 @@ class Geoloc(object):
         """
         Makes the actual call to the external API for IP geolookup
         """
+        info = ""
         try:
             response = urllib.urlopen(config.api_endpoint % ip)
             info = response.read()
+            print info
         except Exception as e:
+            print e
             # TODO : Add some kind of logging here
 
-        if config.api_parser == "json":
+        if self.config.api_parser == "json":
             # Just in case you use an XML API or whatever
             result = self.parseJSON(info)
 

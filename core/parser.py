@@ -29,12 +29,14 @@ class Parser(object):
         entries = []
         while True:
             line = self.log.readline()
+            if line == '':
+                break
             if self.isLog(line):
                 entries.append(self.tidyLog(line))
 
         return entries
 
-    def isLog(line):
+    def isLog(self, line):
         """
         Checks if a log entry is a fail2ban log entry
         """
@@ -53,7 +55,7 @@ class Parser(object):
         logLine["date"] = entry[0:10]
         logLine["time"] = entry[11:19]
         logLine["service"] = entry[entry.find("[") + 1: entry.find("]")]
-        logLIne["ip"] = entry[entry.find("Ban") + 4: len(entry) - 1]
+        logLine["ip"] = entry[entry.find("Ban") + 4: len(entry) - 1]
 
         return logLine
 
