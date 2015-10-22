@@ -16,9 +16,9 @@ def fail2banStatus():
     f = os.popen('service fail2ban status')
     status = f.read()
     if ("inactive" in status or "not running" in status):
-        return True
-    elif ("active" in status or "is running" in status):
         return False
+    elif ("active" in status or "is running" in status):
+        return True
 
 
 def gatherHostInfo():
