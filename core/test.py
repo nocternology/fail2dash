@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
 from parser import Parser
+import utils
+from geoloc import Geoloc
 
 # Default config for testing purposes
 
@@ -26,4 +28,13 @@ config = Config()
 
 # Parser module testing
 parser = Parser(config)
-print parser.getData()
+data = parser.getData()
+print data
+
+# Host info testing
+print utils.gatherHostInfo()
+
+# # Geoloc module testing
+# geoloc = Geoloc(config)
+# for entry in data:
+#     print geoloc.get(entry["ip"])
