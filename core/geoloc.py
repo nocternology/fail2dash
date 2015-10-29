@@ -38,9 +38,8 @@ class Geoloc(object):
         """
         info = ""
         try:
-            response = urllib.urlopen(config.api_endpoint % ip)
+            response = urllib.urlopen(self.config.api_endpoint % ip)
             info = response.read()
-            print info
         except Exception as e:
             print e
             # TODO : Add some kind of logging here
@@ -49,8 +48,7 @@ class Geoloc(object):
             # Just in case you use an XML API or whatever
             result = self.parseJSON(info)
 
-        # TODO : Get country flag from a local CSS/SVG
-        # (see : https://github.com/lipis/flag-icon-css)
+        return result
 
     def parseJSON(self, info):
         """
