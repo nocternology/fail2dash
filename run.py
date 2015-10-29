@@ -5,6 +5,8 @@ from core.utils import gatherHostInfo
 from flask import Flask, session, redirect, escape, request
 from flask import render_template, url_for
 
+import hashlib
+
 app = Flask(__name__)
 
 
@@ -33,11 +35,12 @@ def auth():
     if request.method == "GET":
         return render_template('auth.html', error=False)
     else:
-        if request.form["inputEmail"] == Config.auth_mail and request.form["inputPassword"] == Config.auth_password:
-            session['auth'] = True
-            return redirect(url_for('index'))
-        else:
-            return render_template('auth.html', error=True)
+        if request.form["inputEmail"] == Config.auth_mail:
+            if hashlib.sha512(request.form["inputPassword"]).hexdigest() == Config.auth_password:
+                session['auth'] = True
+                return redirect(url_for('index'))
+
+        return render_template('auth.html', error=True)
 
 
 @app.route('/logout')
