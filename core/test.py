@@ -29,12 +29,12 @@ config = Config()
 # Parser module testing
 parser = Parser(config)
 data = parser.getData()
-print data
+# print data
+#
+# # Host info testing
+# print utils.gatherHostInfo()
 
-# Host info testing
-print utils.gatherHostInfo()
-
-# # Geoloc module testing
-# geoloc = Geoloc(config)
-# for entry in data:
-#     print geoloc.get(entry["ip"])
+# Geoloc module testing
+geoloc = Geoloc(config)
+for entry in data:
+    print geoloc.get(entry["ip"])
